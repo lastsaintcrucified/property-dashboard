@@ -11,7 +11,7 @@ export interface Property {
 	checkIn: number;
 	checkOut: number;
 }
-//initial fake data
+//initial dummy data
 export const initialProperties: Property[] = [
 	{
 		id: 1,
@@ -141,10 +141,12 @@ export const initialProperties: Property[] = [
 	},
 ];
 
+//saving properties to local storage
 export const savePropertiesToLocalStorage = (properties: Property[]) => {
 	localStorage.setItem(PROPERTY_STORAGE_KEY, JSON.stringify(properties));
 };
 
+//getting properties from local storage
 export const getPropertiesFromLocalStorage = (): Property[] => {
 	let data = null;
 	if (global?.window !== undefined) {
@@ -154,9 +156,43 @@ export const getPropertiesFromLocalStorage = (): Property[] => {
 
 	return data ? JSON.parse(data) : initialProperties;
 };
+
 if (global?.window !== undefined) {
 	const storedProperties = localStorage.getItem(PROPERTY_STORAGE_KEY);
 	if (!storedProperties) {
 		savePropertiesToLocalStorage(initialProperties);
 	}
+}
+//calculating property stats
+export const calculatePropertyStats = (properties: Property[]) => {
+	const stats = {
+		totalCheckIn: 0,
+		totalApartment: 0,
+		totalHouse: 0,
+		totalCommercial: 0,
+	};
+
+	properties.forEach((property) => {
+		stats.totalCheckIn += property.checkIn;
+		if (property.type === "Apartment") {
+			stats.totalApartment += 1;
+		} else if (property.type === "House") {
+			stats.totalHouse += 1;
+		} else if (property.type === "Commercial") {
+			stats.totalCommercial += 1;
+		}
+	});
+
+	return stats;
+};
+
+//getting property stats from local storage
+export const getPropertyStatsFromLocalStorage = () => {
+	const properties = getPropertiesFromLocalStorage();
+	return calculatePropertyStats(properties);
+};
+
+if (global?.window !== undefined) {
+	const stats = getPropertyStatsFromLocalStorage();
+	console.log("Property Stats:", stats);
 }

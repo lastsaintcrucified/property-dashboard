@@ -1,8 +1,10 @@
+"use client";
 import ArrowRight from "@/assets/arrow-right.svg";
 import Image from "next/image";
 import Logo from "@/assets/logosaas.png";
 import MenuIcon from "@/assets/menu.svg";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 export const Header = () => {
 	return (
@@ -26,18 +28,23 @@ export const Header = () => {
 			<div className='py-5'>
 				<div className='px-5'>
 					<div className='flex items-center justify-between '>
-						<Image
-							src={Logo}
+						<motion.img
+							src={Logo.src}
 							alt='sass logo image'
 							height={40}
 							width={40}
+							animate={{
+								translateY: [-3, 3],
+							}}
+							transition={{
+								repeat: Infinity,
+								repeatType: "mirror",
+								duration: 1,
+								ease: "easeInOut",
+							}}
 						/>
-						<Image
-							src={MenuIcon}
-							alt='MenuIcon'
-							className='w-5 h-5 md:hidden'
-						/>
-						<nav className='hidden md:flex gap-6 items-center text-black/60'>
+
+						<nav className='flex gap-6 items-center text-black/60'>
 							<Link href='#Card'>Data</Link>
 							<a href='#Properties'>Properties</a>
 							<a href='#Footer'>Contact</a>

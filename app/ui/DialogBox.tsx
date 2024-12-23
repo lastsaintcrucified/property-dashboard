@@ -10,6 +10,7 @@ import {
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { Property } from "../lib/PropertyData";
+import { motion } from "motion/react";
 
 export default function DialogBox({
 	toggle,
@@ -20,7 +21,10 @@ export default function DialogBox({
 	handleClose: () => void;
 	handleAddProperty: (property: Property) => void;
 }) {
+	//state to manage the dialog box
 	const [open, setOpen] = useState(false);
+
+	//state to manage the new property
 	const [newProperty, setNewProperty] = useState<Property>({
 		id: 0,
 		name: "",
@@ -99,7 +103,8 @@ export default function DialogBox({
 												Property type
 											</label>
 											<div className='mt-2 grid grid-cols-1'>
-												<select
+												<motion.select
+													whileTap={{ scale: 0.9, rotate: 3 }}
 													id='propertyType'
 													name='propertyType'
 													autoComplete='property-type'
@@ -115,7 +120,7 @@ export default function DialogBox({
 													<option value='Apartment'>Apartment</option>
 													<option value='House'>House</option>
 													<option value='Commercial'>Commercial</option>
-												</select>
+												</motion.select>
 												<ChevronDownIcon
 													aria-hidden='true'
 													className='pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4'
@@ -132,7 +137,8 @@ export default function DialogBox({
 												Property status
 											</label>
 											<div className='mt-2 grid grid-cols-1'>
-												<select
+												<motion.select
+													whileTap={{ scale: 0.9, rotate: 3 }}
 													id='propertyStatus'
 													name='propertyStatus'
 													autoComplete='property-status'
@@ -147,7 +153,7 @@ export default function DialogBox({
 												>
 													<option value='Available'>Available</option>
 													<option value='Rented'>Rented</option>
-												</select>
+												</motion.select>
 												<ChevronDownIcon
 													aria-hidden='true'
 													className='pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4'
@@ -157,15 +163,17 @@ export default function DialogBox({
 
 										{/* Buttons */}
 										<div className='bg-gray-50 px-0 py-3 sm:flex sm:flex-row-start sm:justify-start sm:gap-2'>
-											<button
+											<motion.button
+												whileTap={{ scale: 0.9, rotate: 3 }}
 												type='button'
 												data-autofocus
 												onClick={handleClose}
 												className='mt-3 inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:text-white hover:bg-red-800 sm:mt-0 sm:w-auto'
 											>
 												Cancel
-											</button>
-											<button
+											</motion.button>
+											<motion.button
+												whileTap={{ scale: 0.9, rotate: 3 }}
 												type='button'
 												onClick={() => {
 													handleAddProperty(newProperty);
@@ -174,7 +182,7 @@ export default function DialogBox({
 												className='inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-800  sm:w-auto'
 											>
 												Add property
-											</button>
+											</motion.button>
 										</div>
 									</div>
 								</div>
