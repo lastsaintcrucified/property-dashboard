@@ -1,6 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Property } from "@/app/lib/PropertyData";
+import {
+	getPropertiesFromLocalStorage,
+	Property,
+	PROPERTY_STORAGE_KEY,
+	savePropertiesToLocalStorage,
+} from "@/app/lib/PropertyData";
 import { PlusIcon } from "@heroicons/react/16/solid";
 import DialogBox from "./DialogBox";
 
@@ -9,16 +14,29 @@ export const Table = ({
 }: {
 	initialProperties: Property[];
 }) => {
-	const [properties, setProperties] = useState<Property[]>(initialProperties);
+	if (typeof window !== "undefined") {
+		const storedProperties = localStorage.getItem(PROPERTY_STORAGE_KEY);
+		if (!storedProperties) {
+			savePropertiesToLocalStorage(initialProperties);
+		}
+	}
+	const [properties, setProperties] = useState<Property[]>(
+		getPropertiesFromLocalStorage()
+	);
 	const [toggle, setToggle] = useState<boolean>(false);
 	const [filterType, setFilterType] = useState<string>("");
 	const [filterStatus, setFilterStatus] = useState<string>("");
 
 	const handleAddProperty = (newProperty: Property) => {
-		setProperties([
+		savePropertiesToLocalStorage([
 			...properties,
-			{ ...newProperty, id: properties.length + 1 },
+			{
+				...newProperty,
+				id: properties.length + 1,
+				date: new Date().toDateString(),
+			},
 		]);
+		setProperties(getPropertiesFromLocalStorage());
 		setToggle(!toggle);
 	};
 
@@ -33,7 +51,7 @@ export const Table = ({
 			<div className='mt-5 mb-5 flex flex-col md:flex-row items-center justify-between'>
 				<div className='flex flex-row items-center'>
 					<button
-						className='btn btn-primary'
+						className='btn btn-primary bg-green-500 hover:bg-green-800'
 						onClick={() => setToggle(!toggle)}
 					>
 						<PlusIcon className='h-4 w-4 mr-2' />
@@ -75,6 +93,9 @@ export const Table = ({
 						<th className='py-2'>Name</th>
 						<th className='py-2'>Type</th>
 						<th className='py-2'>Status</th>
+						<th className='py-2'>Check-in</th>
+						<th className='py-2'>Check-out</th>
+						<th className='py-2'>Date</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -84,6 +105,9 @@ export const Table = ({
 							<td className='border px-4 py-2'>{property.name}</td>
 							<td className='border px-4 py-2'>{property.type}</td>
 							<td className='border px-4 py-2'>{property.status}</td>
+							<td className='border px-4 py-2'>{property.checkIn}</td>
+							<td className='border px-4 py-2'>{property.checkOut}</td>
+							<td className='border px-4 py-2'>{property.date}</td>
 						</tr>
 					))}
 				</tbody>

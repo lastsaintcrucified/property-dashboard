@@ -2,7 +2,10 @@ import { Card } from "../ui/Card";
 
 export default async function CardWrapper() {
 	return (
-		<div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-10 p-5 justify-items-center'>
+		<div
+			id='Card'
+			className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 mt-10 p-5 justify-items-center'
+		>
 			<Card
 				title='Collected'
 				value={10}

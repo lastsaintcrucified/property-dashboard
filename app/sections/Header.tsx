@@ -6,7 +6,10 @@ import Link from "next/link";
 
 export const Header = () => {
 	return (
-		<header className='sticky z-20 top-0 backdrop-blur-sm'>
+		<header
+			id='Card'
+			className='sticky z-20 top-0 backdrop-blur-sm'
+		>
 			<div className='flex justify-center items-center py-3 bg-black text-sm text-white gap-3'>
 				<p className='hidden md:block text-white/60'>
 					Manage your property like a pro.
@@ -35,11 +38,9 @@ export const Header = () => {
 							className='w-5 h-5 md:hidden'
 						/>
 						<nav className='hidden md:flex gap-6 items-center text-black/60'>
-							<Link href='#logoTicker'>About</Link>
-							<a href='#product'>Products</a>
-							<a href='#pricing'>Pricing</a>
-							<a href='#testimonial'>Tetstimonial</a>
-							<a href='#contact'>Contact</a>
+							<Link href='#Card'>Data</Link>
+							<a href='#Properties'>Properties</a>
+							<a href='#Footer'>Contact</a>
 						</nav>
 					</div>
 				</div>

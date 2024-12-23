@@ -26,10 +26,10 @@ export function Card({
 	return (
 		<div className='card rounded-xl bg-gray-50 p-2 '>
 			<div className='flex p-4'>
-				{Icon ? <Icon className='h-5 w-5 text-gray-700' /> : null}
-				<h3 className='ml-2 text-sm font-medium'>{title}</h3>
+				{Icon ? <Icon className='h-7 w-7 text-gray-700 font-semibold' /> : null}
+				<h3 className='ml-2 text-md font-mono tracking-tighter'>{title}</h3>
 			</div>
-			<div className='flex justify-end items-center p-4'>
+			<div className='flex justify-end items-center p-3'>
 				<span className='leading-none text-4xl font-bold tracking-tighter'>
 					{value}
 				</span>

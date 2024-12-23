@@ -1,9 +1,13 @@
-import { initialProperties } from "../lib/PropertyData";
+"use client";
+import { getPropertiesFromLocalStorage, Property } from "../lib/PropertyData";
 import { Table } from "@/app/ui/Table";
 
 export const PropertyTable = () => {
 	return (
-		<div className='container mx-auto p-2 mt-10'>
+		<div
+			id='Properties'
+			className='container mx-auto p-2 mt-10'
+		>
 			<div className='section-heading'>
 				<div className='flex justify-center'>
 					<div className='tag'>Property Data</div>
@@ -14,7 +18,7 @@ export const PropertyTable = () => {
 					you need to do.
 				</p>
 			</div>
-			<Table initialProperties={initialProperties} />
+			<Table initialProperties={getPropertiesFromLocalStorage()} />
 		</div>
 	);
 };

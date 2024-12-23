@@ -26,6 +26,9 @@ export default function DialogBox({
 		name: "",
 		type: "Apartment",
 		status: "Available",
+		checkIn: 0,
+		checkOut: 0,
+		date: "",
 	});
 
 	return (
@@ -61,18 +64,19 @@ export default function DialogBox({
 										{/* User Name */}
 										<div className='sm:col-span-4'>
 											<label
-												htmlFor='username'
+												htmlFor='propertyName'
 												className='block text-sm/6 font-medium text-gray-900'
 											>
-												Username
+												Property name
 											</label>
 											<div className='mt-2'>
 												<div className='flex items-center rounded-md bg-white pl-3 outline outline-1 -outline-offset-1 outline-gray-300 focus-within:outline focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600'>
 													<input
-														id='username'
-														name='username'
+														id='propertyName'
+														name='propertyName'
 														type='text'
-														placeholder='janesmith'
+														required
+														placeholder='new property'
 														value={newProperty.name}
 														onChange={(e) =>
 															setNewProperty({
@@ -89,15 +93,15 @@ export default function DialogBox({
 										{/* Property Type */}
 										<div className='sm:col-span-3 mt-3'>
 											<label
-												htmlFor='country'
+												htmlFor='propertyType'
 												className='block text-sm/6 font-medium text-gray-900'
 											>
 												Property type
 											</label>
 											<div className='mt-2 grid grid-cols-1'>
 												<select
-													id='type'
-													name='type'
+													id='propertyType'
+													name='propertyType'
 													autoComplete='property-type'
 													className='col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'
 													value={newProperty.type}
@@ -122,16 +126,16 @@ export default function DialogBox({
 										{/* property status */}
 										<div className='sm:col-span-3 mt-3'>
 											<label
-												htmlFor='country'
+												htmlFor='propertyStatus'
 												className='block text-sm/6 font-medium text-gray-900'
 											>
-												Property type
+												Property status
 											</label>
 											<div className='mt-2 grid grid-cols-1'>
 												<select
-													id='type'
-													name='type'
-													autoComplete='property-type'
+													id='propertyStatus'
+													name='propertyStatus'
+													autoComplete='property-status'
 													className='col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'
 													value={newProperty.status}
 													onChange={(e) =>
@@ -150,6 +154,7 @@ export default function DialogBox({
 												/>
 											</div>
 										</div>
+
 										{/* Buttons */}
 										<div className='bg-gray-50 px-0 py-3 sm:flex sm:flex-row-start sm:justify-start sm:gap-2'>
 											<button
