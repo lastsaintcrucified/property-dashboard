@@ -1,3 +1,4 @@
+"use client";
 import { Header } from "@/app/sections/Header";
 import { Intro } from "./sections/Intro";
 import CardWrapper from "./sections/CardWrapper";

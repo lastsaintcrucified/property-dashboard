@@ -1,10 +1,5 @@
 import Logo from "@/assets/logosaas.png";
 import Image from "next/image";
-import SocialX from "@/assets/social-x.svg";
-import SocialInsta from "@/assets/social-insta.svg";
-import SocialLinked from "@/assets/social-linkedin.svg";
-import SocialPin from "@/assets/social-pin.svg";
-import SocialYou from "@/assets/social-youtube.svg";
 
 export const Footer = () => {
 	return (
@@ -29,30 +24,9 @@ export const Footer = () => {
 					<a href='#Properties'>Properties</a>
 					<a href='#Footer'>Contact</a>
 				</nav>
-				<div className='flex justify-center gap-6 mt-6'>
-					<Image
-						src={SocialX}
-						alt='Social X'
-					/>
-					<Image
-						src={SocialInsta}
-						alt='Social Insta'
-					/>
-					<Image
-						src={SocialLinked}
-						alt='Social Linked'
-					/>
-					<Image
-						src={SocialPin}
-						alt='Social Pin'
-					/>
-					<Image
-						src={SocialYou}
-						alt='Social You'
-					/>
-				</div>
+
 				<p className='mt-6'>
-					&copy; 2024, My towhidul Islam, All right reserved
+					&copy; 2024, MD. towhidul Islam, All right reserved
 				</p>
 			</div>
 		</footer>

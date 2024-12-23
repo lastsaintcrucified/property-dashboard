@@ -75,7 +75,7 @@ export const Table = () => {
 					<motion.button
 						whileTap={{ scale: 0.9, rotate: 3 }}
 						whileHover={{ scale: 1.09 }}
-						className='btn btn-primary bg-green-500 hover:bg-green-600'
+						className='btn btn-primary bg-green-500  dark:text-blue-800 hover:bg-green-600 dark:hover:bg-blue-800 dark:hover:text-white'
 						onClick={() => setToggle(!toggle)}
 					>
 						<PlusIcon className='h-4 w-4 mr-2' />
@@ -87,7 +87,7 @@ export const Table = () => {
 						<label className='mr-2 label-txt'>Filter by Type:</label>
 						<motion.select
 							whileTap={{ scale: 0.9, rotate: 3 }}
-							className='border p-2 rounded-3xl shadow-[0_7px_14px_#808080]'
+							className='border p-2 rounded-3xl shadow-[0_7px_14px_#808080] dark:text-blue-800 dark:bg-gray-200'
 							value={filterType}
 							onChange={(e) => setFilterType(e.target.value)}
 						>
@@ -101,7 +101,7 @@ export const Table = () => {
 						<label className='md:ml-4 mr-2 label-txt'>Filter by Status:</label>
 						<motion.select
 							whileTap={{ scale: 0.9, rotate: 3 }}
-							className='border p-2 rounded-3xl shadow-[0_7px_14px_#808080]'
+							className='border p-2 rounded-3xl shadow-[0_7px_14px_#808080] dark:text-blue-800 dark:bg-gray-200'
 							value={filterStatus}
 							onChange={(e) => setFilterStatus(e.target.value)}
 						>
@@ -118,7 +118,7 @@ export const Table = () => {
 				initial={{ opacity: 0, y: 25 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 1, ease: "easeInOut" }}
-				className='min-w-full bg-white rounded-lg overflow-hidden shadow-lg '
+				className='p-10 min-w-full bg-white dark:bg-gray-200 dark:border-blue-900 dark:text-blue-800 rounded-lg overflow-hidden shadow-lg '
 			>
 				<thead>
 					<tr>
@@ -134,16 +134,30 @@ export const Table = () => {
 				<tbody>
 					{currentItems.map((property) => (
 						<motion.tr
-							whileHover={{ scale: 1.1, color: "#4CBB17" }}
+							whileHover={{ scale: 1.1, color: "#4CBB17", fontWeight: 700 }}
 							key={property.id}
 						>
-							<td className='border px-4 py-2'>{property.id}</td>
-							<td className='border px-4 py-2'>{property.name}</td>
-							<td className='border px-4 py-2'>{property.type}</td>
-							<td className='border px-4 py-2'>{property.status}</td>
-							<td className='border px-4 py-2'>{property.checkIn}</td>
-							<td className='border px-4 py-2'>{property.checkOut}</td>
-							<td className='border px-4 py-2'>{property.date}</td>
+							<td className='border dark:border-blue-900 px-4 py-2 dark:text-blue-800'>
+								{property.id}
+							</td>
+							<td className='border dark:border-blue-900 px-4 py-2 dark:text-blue-800'>
+								{property.name}
+							</td>
+							<td className='border dark:border-blue-900 px-4 py-2 dark:text-blue-800'>
+								{property.type}
+							</td>
+							<td className='border dark:border-blue-900 px-4 py-2 dark:text-blue-800'>
+								{property.status}
+							</td>
+							<td className='border dark:border-blue-900 px-4 py-2 dark:text-blue-800'>
+								{property.checkIn}
+							</td>
+							<td className='border dark:border-blue-900  px-4 py-2 dark:text-blue-800'>
+								{property.checkOut}
+							</td>
+							<td className='border dark:border-blue-900 px-4 py-2 dark:text-blue-800'>
+								{property.date}
+							</td>
 						</motion.tr>
 					))}
 				</tbody>

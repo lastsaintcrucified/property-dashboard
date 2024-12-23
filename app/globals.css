@@ -7,33 +7,36 @@
 		@apply px-4 py-2 font-medium inline-flex items-center justify-center rounded-lg tracking-tighter;
 	}
 	.btn-primary {
-		@apply bg-black  text-white;
+		@apply bg-black  text-white dark:bg-gray-200 dark:text-black;
 	}
 	.btn-text {
-		@apply bg-transparent text-black;
+		@apply bg-transparent text-black dark:text-white;
 	}
 	.btn-secondary {
-		@apply bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg;
+		@apply bg-gray-300  hover:bg-gray-400 text-gray-800 dark:text-blue-800 dark:hover:text-white dark:hover:bg-blue-800 font-bold py-2 px-4 rounded-lg;
 	}
 	.logo-ticker-image {
 		@apply h-8 w-auto;
 	}
 	.tag {
-		@apply px-3 py-1 text-sm inline-flex border border-[#222]/10 rounded-lg tracking-tight;
+		@apply px-3 py-1 text-sm inline-flex border border-[#222]/10 dark:border-white/60 rounded-lg tracking-tight;
 	}
 	.section-title {
-		@apply text-center text-3xl md:text-[54px] md:leading-[70px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text;
+		@apply text-center text-3xl md:text-[54px] md:leading-[70px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] dark:from-white dark:to-blue-300 text-transparent bg-clip-text;
 	}
 	.section-description {
-		@apply text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E];
+		@apply text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E] dark:text-gray-50;
 	}
 	.section-heading {
 		@apply max-w-[540px] mx-auto;
 	}
 	.card {
-		@apply p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#808080] max-w-xs w-full;
+		@apply p-10 border border-[#F1F1F1] dark:border-gray-500 rounded-3xl shadow-[0_7px_14px_#808080] max-w-xs w-full;
 	}
 	.label-txt {
 		@apply text-center font-medium tracking-tighter;
+	}
+	.table-row {
+		@apply border dark:border-blue-900 px-4 py-2 dark:text-blue-800;
 	}
 }

@@ -2,7 +2,6 @@
 import ArrowRight from "@/assets/arrow-right.svg";
 import Image from "next/image";
 import Logo from "@/assets/logosaas.png";
-import MenuIcon from "@/assets/menu.svg";
 import Link from "next/link";
 import { motion } from "motion/react";
 
@@ -12,8 +11,9 @@ export const Header = () => {
 			id='Card'
 			className='sticky z-20 top-0 backdrop-blur-sm'
 		>
-			<div className='flex justify-center items-center py-3 bg-black text-sm text-white gap-3'>
-				<p className='hidden md:block text-white/60'>
+			{/* Sticky top header */}
+			<div className='flex justify-center items-center py-3 bg-black dark:bg-white text-sm text-white dark:text-black gap-3'>
+				<p className='hidden md:block text-white/60 dark:text-black/60'>
 					Manage your property like a pro.
 				</p>
 				<div className='inline-flex gap-1 items-center'>
@@ -25,6 +25,7 @@ export const Header = () => {
 					/>
 				</div>
 			</div>
+			{/* NavBar goes here */}
 			<div className='py-5'>
 				<div className='px-5'>
 					<div className='flex items-center justify-between '>
@@ -44,7 +45,7 @@ export const Header = () => {
 							}}
 						/>
 
-						<nav className='flex gap-6 items-center text-black/60'>
+						<nav className='flex gap-6 items-center text-black/60 dark:text-white'>
 							<Link href='#Card'>Data</Link>
 							<a href='#Properties'>Properties</a>
 							<a href='#Footer'>Contact</a>

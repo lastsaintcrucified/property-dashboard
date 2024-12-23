@@ -3,6 +3,7 @@ import Avatar3 from "@/assets/avatar-3.png";
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
+import { DarkModeToggle } from "../ui/DarkModeToggle";
 
 export const Intro = () => {
 	const propRef = useRef(null);
@@ -33,7 +34,7 @@ export const Intro = () => {
 				/>
 				<div>
 					<h1 className='text-xl font-semibold'>John Doe</h1>
-					<span className='text-sm text-gray-600'>
+					<span className='text-sm text-gray-600 dark:text-gray-400'>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					</span>
 				</div>
@@ -44,12 +45,13 @@ export const Intro = () => {
 					translateY: translateY,
 				}}
 			>
-				<motion.button
+				{/* <motion.button
 					whileTap={{ scale: 0.9, rotate: 3 }}
 					className='btn btn-primary'
 				>
 					Show More
-				</motion.button>
+				</motion.button> */}
+				<DarkModeToggle />
 				<motion.button
 					whileTap={{ scale: 0.9, rotate: 3 }}
 					className='btn btn-text '

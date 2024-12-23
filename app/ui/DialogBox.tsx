@@ -7,7 +7,6 @@ import {
 	DialogPanel,
 	DialogTitle,
 } from "@headlessui/react";
-import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { Property } from "../lib/PropertyData";
 import { motion } from "motion/react";
