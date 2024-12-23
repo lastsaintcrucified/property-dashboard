@@ -30,4 +30,7 @@
 	.card {
 		@apply p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#808080] max-w-xs w-full;
 	}
+	.label-txt {
+		@apply text-center font-medium tracking-tighter;
+	}
 }
