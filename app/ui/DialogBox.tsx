@@ -9,15 +9,24 @@ import {
 } from "@headlessui/react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
+import { Property } from "../lib/PropertyData";
 
 export default function DialogBox({
 	toggle,
 	handleClose,
+	handleAddProperty,
 }: {
 	toggle: boolean;
 	handleClose: () => void;
+	handleAddProperty: (property: Property) => void;
 }) {
 	const [open, setOpen] = useState(false);
+	const [newProperty, setNewProperty] = useState<Property>({
+		id: 0,
+		name: "",
+		type: "Apartment",
+		status: "Available",
+	});
 
 	return (
 		<Dialog
@@ -64,10 +73,13 @@ export default function DialogBox({
 														name='username'
 														type='text'
 														placeholder='janesmith'
-														// value={newProperty.name}
-														// onChange={(e) =>
-														// 	setNewProperty({ ...newProperty, name: e.target.value })
-														// }
+														value={newProperty.name}
+														onChange={(e) =>
+															setNewProperty({
+																...newProperty,
+																name: e.target.value as Property["name"],
+															})
+														}
 														className='block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6'
 													/>
 												</div>
@@ -88,13 +100,13 @@ export default function DialogBox({
 													name='type'
 													autoComplete='property-type'
 													className='col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'
-													// value={newProperty.type}
-													// onChange={(e) =>
-													// 	setNewProperty({
-													// 		...newProperty,
-													// 		type: e.target.value as Property["type"],
-													// 	})
-													// }
+													value={newProperty.type}
+													onChange={(e) =>
+														setNewProperty({
+															...newProperty,
+															type: e.target.value as Property["type"],
+														})
+													}
 												>
 													<option value='Apartment'>Apartment</option>
 													<option value='House'>House</option>
@@ -121,13 +133,13 @@ export default function DialogBox({
 													name='type'
 													autoComplete='property-type'
 													className='col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'
-													// value={newProperty.status}
-													// onChange={(e) =>
-													// 	setNewProperty({
-													// 		...newProperty,
-													// 		status: e.target.value as Property["status"],
-													// 	})
-													// }
+													value={newProperty.status}
+													onChange={(e) =>
+														setNewProperty({
+															...newProperty,
+															status: e.target.value as Property["status"],
+														})
+													}
 												>
 													<option value='Available'>Available</option>
 													<option value='Rented'>Rented</option>
@@ -138,6 +150,7 @@ export default function DialogBox({
 												/>
 											</div>
 										</div>
+										{/* Buttons */}
 										<div className='bg-gray-50 px-0 py-3 sm:flex sm:flex-row-start sm:justify-start sm:gap-2'>
 											<button
 												type='button'
@@ -150,7 +163,7 @@ export default function DialogBox({
 											<button
 												type='button'
 												onClick={() => {
-													// handleProperty;
+													handleAddProperty(newProperty);
 													handleClose;
 												}}
 												className='inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-800  sm:w-auto'

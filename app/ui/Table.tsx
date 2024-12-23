@@ -13,19 +13,13 @@ export const Table = ({
 	const [toggle, setToggle] = useState<boolean>(false);
 	const [filterType, setFilterType] = useState<string>("");
 	const [filterStatus, setFilterStatus] = useState<string>("");
-	const [newProperty, setNewProperty] = useState<Property>({
-		id: 0,
-		name: "",
-		type: "Apartment",
-		status: "Available",
-	});
 
-	const handleAddProperty = () => {
+	const handleAddProperty = (newProperty: Property) => {
 		setProperties([
 			...properties,
 			{ ...newProperty, id: properties.length + 1 },
 		]);
-		setNewProperty({ id: 0, name: "", type: "Apartment", status: "Available" });
+		setToggle(!toggle);
 	};
 
 	const filteredProperties = properties.filter(
@@ -45,49 +39,6 @@ export const Table = ({
 						<PlusIcon className='h-4 w-4 mr-2' />
 						Add New Property
 					</button>
-
-					{/* <input
-						className='border p-2 mr-2'
-						type='text'
-						placeholder='Name'
-						value={newProperty.name}
-						onChange={(e) =>
-							setNewProperty({ ...newProperty, name: e.target.value })
-						}
-					/>
-					<select
-						className='border p-2 mr-2 '
-						value={newProperty.type}
-						onChange={(e) =>
-							setNewProperty({
-								...newProperty,
-								type: e.target.value as Property["type"],
-							})
-						}
-					>
-						<option value='Apartment'>Apartment</option>
-						<option value='House'>House</option>
-						<option value='Commercial'>Commercial</option>
-					</select>
-					<select
-						className='border p-2 mr-2'
-						value={newProperty.status}
-						onChange={(e) =>
-							setNewProperty({
-								...newProperty,
-								status: e.target.value as Property["status"],
-							})
-						}
-					>
-						<option value='Available'>Available</option>
-						<option value='Rented'>Rented</option>
-					</select>
-					<button
-						className='bg-blue-500 text-white p-2'
-						onClick={handleAddProperty}
-					>
-						Add Property
-					</button> */}
 				</div>
 				<div className='flex flex-col mt-10 gap-6 md:gap-0 md:flex-row items-center md:mt-0'>
 					<div className='flex flex-row items-center'>
@@ -142,6 +93,7 @@ export const Table = ({
 			<DialogBox
 				toggle={toggle}
 				handleClose={() => setToggle(!toggle)}
+				handleAddProperty={(newProperty) => handleAddProperty(newProperty)}
 			/>
 		</div>
 	);
